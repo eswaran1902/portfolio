@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eswaran Jefrey | Portfolio</title>
+
+<style>
+/* ===== Background Animation ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #020617;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* ===== Layout ===== */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #22c55e;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #38bdf8;
+    margin-top: 50px;
+}
+
+.section {
+    margin-top: 30px;
+    animation: fadeUp 1s ease;
+}
+
+/* ===== Cards ===== */
+.card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(56,189,248,0.3);
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    padding: 10px 20px;
+    background: #22c55e;
+    color: #000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #16a34a;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Header Glow ===== */
+.glow {
+    text-shadow: 0 0 10px #22c55e;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="container">
+
+    <!-- Header -->
+    <h1 class="glow">Eswaran Jefrey Jayaseelan</h1>
+    <p>Software Engineering Student | Universiti Sains Malaysia</p>
+
+    <a class="btn" href="https://www.linkedin.com/in/eswaran-jefrey-jayaseelan-23600627b" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://github.com/eswaran1902" target="_blank">GitHub</a>
+
+    <!-- About -->
+    <div class="section">
+        <h2>About Me</h2>
+        <div class="card">
+            I am a Software Engineering student with experience in full-stack development and system design.
+            I enjoy building practical applications and interactive systems.
+            Currently seeking internship opportunities (March – August 2026).
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <h2>Tech Stack</h2>
+        <div class="card">
+            <b>Languages:</b> JavaScript, Java, Python, C++, SQL<br>
+            <b>Frameworks:</b> React, Node.js, PHP<br>
+            <b>Database:</b> MySQL, MongoDB<br>
+            <b>Tools:</b> Git, GitHub, VS Code, Three.js
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+        <h2>Projects</h2>
+
+        <div class="card">
+            <b>APSR – AI Salesperson Royalty System</b><br>
+            Full-stack system for tracking sales and automated commission lifecycle.<br>
+            Tech: React, Node.js, MongoDB
+        </div>
+
+        <div class="card">
+            <b>CafeConnect@USM</b><br>
+            Smart campus café system with real-time menu, pre-orders, and role-based access.<br>
+            Tech: PHP, JavaScript, MySQL
+        </div>
+
+        <div class="card">
+            <b>ReCarNation – Used Car Platform</b><br>
+            Role-based car marketplace with booking and authentication.<br>
+            Tech: React, Tailwind, Java Servlets
+        </div>
+
+        <div class="card">
+            <b>3D Data Visualization</b><br>
+            Interactive 3D layouts (Sphere, Helix, Grid, Pyramid) using Three.js.
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+/* ===== Gaming Background Animation (Particles) ===== */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#22c55e";
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
